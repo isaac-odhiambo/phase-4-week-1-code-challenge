@@ -9,8 +9,11 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///app.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 migrate = Migrate(app, db)
-
 db.init_app(app)
+
+@app.route('/', methods=['GET'])
+def home():
+    return '<h1>Welcome to the Superheroes API</h1>'
 
 @app.route('/heroes', methods=['GET'])
 def get_heroes():
